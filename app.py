@@ -15,7 +15,7 @@ from datetime import timedelta
 app = Flask(__name__)
 
 app.config['SESSION_TYPE'] = 'filesystem'
-app.secret_key = os.environ['SECRET_KEY']
+app.secret_key = os.environ['SECRET_KEY'] if 'DB_USER' in os.environ else "secret_123"
 
 @app.before_request
 def make_session_permanent():
